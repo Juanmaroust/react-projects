@@ -1,6 +1,6 @@
 import { ReactNode, useState } from "react";
 
-export function TwitterFollowCard ({formatUserName, userName, children, initialIsFollowing}:{formatUserName:Function, userName:string, children:ReactNode, initialIsFollowing:boolean}) {
+export function TwitterFollowCard ({formatUserName, children, initialIsFollowing}:{formatUserName:Function, children:ReactNode, initialIsFollowing:boolean}) {
     const [isFollowing, setIsFollowing] = useState(initialIsFollowing)
     
     const followingStatus = isFollowing ? 'Following': 'Follow'
@@ -13,16 +13,17 @@ export function TwitterFollowCard ({formatUserName, userName, children, initialI
         
         <article className='tw-followCard'>
         <header>
-          <img alt="Avatar" src={`https://unavatar.io/google/${userName}.com`} />
+          <img alt="Avatar" src={`https://unavatar.io/google/${children}.com`} />
           <div>
             <strong>{children}</strong>
-            <span>{formatUserName(userName)}</span>
+            <span>{formatUserName(children)}</span>
           </div>
         </header>
   
         <aside>
           <button className={buttonClassName} onClick={handleClick}>
-            {followingStatus}
+            <span className='tw-followCard-followingStatus'>{followingStatus}</span>
+            <span className='tw-followCard-unfollow'>Unfollow</span>
           </button>
         </aside>
       </article>

@@ -1,34 +1,36 @@
-// import { useState } from 'react'
-// import reactLogo from './assets/react.svg'
-// import viteLogo from '/vite.svg'
 import './App.css'
 import { TwitterFollowCard } from './TwitterFollowCard'
 
 export function App() {
-  const formatUserName = (userName:string) => `@${userName}`
+  const formatUserName = (userName:string) => `@${userName.toLowerCase()}`
+  const users = [
+    {
+      user: 'Marvel',
+      isFollowing: true
+    },
+    {
+      user: 'Google',
+      isFollowing: true
+    },
+    {
+      user: 'Facebook',
+      isFollowing: false
+    }
+  ]
 
   return (
-    <section className='App'>
-      <TwitterFollowCard 
-        formatUserName={formatUserName} 
-        userName='marvel'
-        initialIsFollowing>
-          Marvel
-      </TwitterFollowCard>
-      <TwitterFollowCard 
-        formatUserName={formatUserName} 
-        userName='google'
-        initialIsFollowing>
-          Google
-      </TwitterFollowCard>
-      <TwitterFollowCard 
-        formatUserName={formatUserName} 
-        userName='facebook'
-        initialIsFollowing={false}>
-          Facebook
-      </TwitterFollowCard>
-    </section>
-    
+      <section className='App'>
+        {
+          users.map(({user, isFollowing}) => (
+            <TwitterFollowCard 
+              key={user}
+              formatUserName={formatUserName}
+              initialIsFollowing={isFollowing}>
+                {user}
+              </TwitterFollowCard>
+          ))
+        }
+      </section>
   )
 
 
