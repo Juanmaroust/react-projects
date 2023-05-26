@@ -5,42 +5,6 @@
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
-
 .tw-followCard {
   display: flex;
   align-items: center;
@@ -81,15 +45,38 @@ article img {
   transition: .3s ease background-color;
 }
 
-.tw-followCard-button.is-following{
-  border: 1px solid green;
+.tw-followCard-button:hover{
+  opacity: .8;
+  border-color: black;
 }
 
-.tw-followCard-button:hover{
-  background-color: #09f;
-  
+.tw-followCard-followingStatus {
+  display: block;
+}
+
+.tw-followCard-button.is-following{
+  border: 1px solid #bbb;
+  background: transparent;
+  color:#fff;
+  width: 140px;
 }
 
 .tw-followCard-button.is-following:hover {
-  background: green;
+  background-color: rgb(255, 0, 0, 0.178);
+  color: red;
+  border: 1px solid red;
+  transition: .3s ease all;
+  opacity: 1;
+}
+
+.tw-followCard-button.is-following:hover .tw-followCard-followingStatus {
+  display:none;
+}
+
+.tw-followCard-button.is-following:hover .tw-followCard-unfollow {
+  display:block;
+}
+
+.tw-followCard-unfollow {
+  display: none;
 }
